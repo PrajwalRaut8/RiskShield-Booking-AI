@@ -1,4 +1,4 @@
-# Project Proposal: StayShield AI
+# Project Proposal: RiskShield Booking AI
 ### *Predictive Revenue Protection & Smart Deposit Engine for Hospitality Operations*
 
 **Prepared for:** Executive Leadership & Revenue Management Committee, Aurelia Hospitality Group  
@@ -12,9 +12,9 @@
 
 Every night a hotel room sits empty, its revenue is lost permanently. Unlike physical retail goods, unsold hotel inventory cannot be stored and resold tomorrow. Across our City and Resort properties, **more than $37\%$ of confirmed reservations are canceled prior to check-in**—creating severe last-minute occupancy gaps, unpredictable staffing schedules, and millions of Euros in lost annual room revenue. Current responses—either absorbing empty rooms or enforcing blanket non-refundable policies—force an unacceptable trade-off between bleeding revenue and driving loyal guests to competitors.
 
-To resolve this, we propose **StayShield AI**, a dual-model Machine Learning revenue protection engine designed to score every incoming reservation at the exact moment of booking. Using only eight verifiable booking-time attributes (such as lead time, stay length, room category, booking channel, and special requests), StayShield AI pairs a **Dynamic Price Valuation Model (Regression)** with a **Cancellation Risk Model (Classification)** to quantify exact **Revenue at Risk** in Euros. Instead of penalizing every traveler, the system automatically flags only high-risk, high-value bookings for targeted credit-card holds or pre-arrival confirmation—while approving safe bookings with zero friction.
+To resolve this, we propose **RiskShield Booking AI**, a dual-model Machine Learning revenue protection engine designed to score every incoming reservation at the exact moment of booking. Using only eight verifiable booking-time attributes (such as lead time, stay length, room category, booking channel, and special requests), RiskShield Booking AI pairs a **Dynamic Price Valuation Model (Regression)** with a **Cancellation Risk Model (Classification)** to quantify exact **Revenue at Risk** in Euros. Instead of penalizing every traveler, the system automatically flags only high-risk, high-value bookings for targeted credit-card holds or pre-arrival confirmation—while approving safe bookings with zero friction.
 
-Validated on historical operations across **119,390 real reservations** (trained on 2015–2016 and tested on unseen 2017 bookings), StayShield AI isolates high-risk bookings that cancel at more than double the rate of low-risk bookings and identifies millions of Euros in vulnerable room revenue before check-in day. Delivered as a 12-week pilot on an estimated budget of **€42,500**, StayShield AI provides a low-risk, high-ROI path to protecting net room revenue while preserving guest satisfaction.
+Validated on historical operations across **119,390 real reservations** (trained on 2015–2016 and tested on unseen 2017 bookings), RiskShield Booking AI isolates high-risk bookings that cancel at more than double the rate of low-risk bookings and identifies millions of Euros in vulnerable room revenue before check-in day. Delivered as a 12-week pilot on an estimated budget of **€42,500**, RiskShield Booking AI provides a low-risk, high-ROI path to protecting net room revenue while preserving guest satisfaction.
 
 ---
 
@@ -48,7 +48,7 @@ As distribution costs from third-party OTAs continue to rise, protecting net rea
 > *"To equip hotel revenue managers with real-time, booking-level financial visibility—protecting vulnerable room revenue through targeted, data-driven interventions while keeping the booking experience seamless for reliable guests."*
 
 ### Solution Architecture (Plain-English Approach)
-StayShield AI operates as a lightweight, automated decision layer integrated alongside our existing booking intake workflow. Whenever a new reservation is created, the system evaluates **eight honest booking-time inputs** (`hotel`, `month`, `segment`, `room`, `lead_time`, `nights`, `adults`, `special_requests`)—deliberately excluding any post-check-in records to ensure zero data leakage in live operations—and runs two complementary engines:
+RiskShield Booking AI operates as a lightweight, automated decision layer integrated alongside our existing booking intake workflow. Whenever a new reservation is created, the system evaluates **eight honest booking-time inputs** (`hotel`, `month`, `segment`, `room`, `lead_time`, `nights`, `adults`, `special_requests`)—deliberately excluding any post-check-in records to ensure zero data leakage in live operations—and runs two complementary engines:
 
 1. **Engine 1 — Fair Room Valuation (Regression):** Estimates the fair nightly room rate ($\widehat{\text{ADR}}$) for that stay profile, giving leadership a transparent benchmark of total booking value ($\widehat{\text{ADR}} \times \text{Nights}$).
 2. **Engine 2 — Cancellation Risk Scoring (Classification):** Outputs a calibrated probability of cancellation ($P_{\text{Cancel}}$) between $0\%$ and $100\%$.
@@ -71,7 +71,7 @@ StayShield AI operates as a lightweight, automated decision layer integrated alo
 | **Phase 1: Discovery & Data Audit** | Weeks 1–2 | Extract 24 months of historical PMS booking logs; remove corrupted records (zero-guest/zero-night anomalies) and strip post-booking leakage fields (`reservation_status`, `assigned_room_type`, `deposit_type`). | **M1:** Clean, leakage-audited dataset & KPI baseline signed off. |
 | **Phase 2: Dual-Model Development** | Weeks 3–5 | Train Regression (`ADR`) and Classification (`is_canceled`) models using strict chronological validation (past years predicting unseen future year). | **M2:** Models meet target MAE and ROC-AUC benchmarks on unseen data. |
 | **Phase 3: Business Policy & Backtest** | Weeks 6–7 | Calibrate Red/Yellow/Green revenue thresholds with Revenue Managers; run full historical financial backtest comparing Predicted Safe vs. Predicted Risky cohorts. | **M3:** Executive sign-off on intervention thresholds & ROI projection. |
-| **Phase 4: Shadow Pilot & Integration** | Weeks 8–10 | Deploy StayShield AI in "shadow mode" on live reservations (scoring bookings without altering guest checkout) to verify stability and front-desk usability. | **M4:** Zero-downtime shadow run & staff training completed. |
+| **Phase 4: Shadow Pilot & Integration** | Weeks 8–10 | Deploy RiskShield Booking AI in "shadow mode" on live reservations (scoring bookings without altering guest checkout) to verify stability and front-desk usability. | **M4:** Zero-downtime shadow run & staff training completed. |
 | **Phase 5: Controlled Live Rollout** | Weeks 11–12 | Activate automated reminders and targeted deposit triggers on $50\%$ of eligible high-risk bookings (A/B test); publish executive impact scorecard. | **M5:** Production handover & Go/No-Go scale decision. |
 
 ---
@@ -109,7 +109,7 @@ StayShield AI operates as a lightweight, automated decision layer integrated alo
 ## 4. Project Deliverables & Goals
 
 ### End Product & Final Objective
-The final objective of this initiative is a **production-ready StayShield AI Revenue Protection Engine** deployed across our City and Resort properties, enabling revenue teams to automatically score every incoming booking for Fair Nightly Value (`ADR`) and Cancellation Probability, and trigger proportionate revenue-protection actions.
+The final objective of this initiative is a **production-ready RiskShield Booking AI Revenue Protection Engine** deployed across our City and Resort properties, enabling revenue teams to automatically score every incoming booking for Fair Nightly Value (`ADR`) and Cancellation Probability, and trigger proportionate revenue-protection actions.
 
 ### Deliverable Timeline
 
@@ -132,7 +132,7 @@ The final objective of this initiative is a **production-ready StayShield AI Rev
 
 ## 5. Required Resources & Budget
 
-To keep this initiative lean, fast, and financially low-risk, StayShield AI is built entirely on **open-source Python and Scikit-Learn tooling** (zero expensive proprietary AI license fees), keeping total 12-week pilot expenditure to **€42,500**.
+To keep this initiative lean, fast, and financially low-risk, RiskShield Booking AI is built entirely on **open-source Python and Scikit-Learn tooling** (zero expensive proprietary AI license fees), keeping total 12-week pilot expenditure to **€42,500**.
 
 ### Project Budget & Cost Breakdown
 
@@ -156,8 +156,8 @@ To keep this initiative lean, fast, and financially low-risk, StayShield AI is b
 
 Unpredictable booking cancellations are not just an operational nuisance—they represent one of the largest controllable revenue leaks in modern hospitality. Relying on gut instinct, blanket non-refundable restrictions, or unprioritized manual phone calls leaves millions of Euros exposed every year while alienating our most reliable guests.
 
-**StayShield AI** offers a practical, transparent, and low-cost solution built directly on our existing reservation data. By pairing **Dynamic Price Valuation (Regression)** with **Booking-Time Cancellation Risk (Classification)**, the platform pinpoints exactly *which* bookings are likely to cancel and *how many Euros* are truly at stake—empowering our hotels to intervene only where the financial return justifies action.
+**RiskShield Booking AI** offers a practical, transparent, and low-cost solution built directly on our existing reservation data. By pairing **Dynamic Price Valuation (Regression)** with **Booking-Time Cancellation Risk (Classification)**, the platform pinpoints exactly *which* bookings are likely to cancel and *how many Euros* are truly at stake—empowering our hotels to intervene only where the financial return justifies action.
 
-With a total pilot investment of **€42,500**, zero proprietary software lock-in, and a clear 12-week path to measurable revenue recovery, StayShield AI is positioned to pay for itself rapidly and establish a scalable analytics foundation across the entire Aurelia Hospitality Group portfolio.
+With a total pilot investment of **€42,500**, zero proprietary software lock-in, and a clear 12-week path to measurable revenue recovery, RiskShield Booking AI is positioned to pay for itself rapidly and establish a scalable analytics foundation across the entire Aurelia Hospitality Group portfolio.
 
 **Requested Action:** We respectfully request Executive Committee approval of the **€42,500** pilot budget and authorization to initiate **Phase 1 (Discovery & Data Audit)** on Monday.
